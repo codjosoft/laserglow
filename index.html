@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Laserglow</title>
+    <link rel="stylesheet" href="./media/reset.css" />
+    <link rel="stylesheet" href="./media/vscode.css" />
+    <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: #eee;
+        }
+
+        h1 {
+            font-size: 40px;
+            background-color: white;
+            text-align: center;
+            margin: 2px;
+            font-weight: bold;
+        }
+
+       .second-container, .container {
+            width: 400px;
+            height: 60vh;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: auto;
+            flex-direction: column;
+            border-radius: 40px;
+
+        }
+        button{
+        padding: 4px;
+        margin: 8px;
+        background: red;
+        color: white;
+        font-weight: bold;
+        border-radius: 3px;
+        width: 120px;
+        
+        }
+        button:hover{
+            background-color: lightblue;
+            cursor: pointer;
+        }
+        .col1{
+            width: 200px;
+            height: 23vh;
+            background-color: #eee;
+            font-size: 20px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>hello world</h1>
+        <button>clickme</button>
+    </div>
+    <div class="second-container" style="display: none;">
+        <div class="col1">
+        <h2>Test Successful..</h2>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script>
+
+
+
+        //create fetch request
+        var url = 'http://localhost/ride_or_die/July/laserglow/route.php?func=emil';
+        var email = fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                 },
+                    body: JSON.stringify({
+                    email: "kojo53i@live.com",
+                     }),
+             })
+            .then(function (response) {
+                console.log(response);
+                //create element
+                var element = document.createElement("div");
+                //set innerHTML
+                element.innerHTML = response;
+                //append element to body
+                const container = document.querySelector("div.container");
+                container.appendChild(element);
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+
+            $("button").click(function (e) { 
+                e.preventDefault();
+                // alert("attemping disappear message")
+                confirm("do u want to dispear message")
+                $('.container').fadeOut('slow');
+
+                    setTimeout(() => {
+                        $(".second-container").css('display', 'flex');  
+                    }, 2000);
+
+            });
+
+            //create ajax request
+
+            
+    </script>
+</body>
+
+</html>
